@@ -1,2 +1,2 @@
-﻿using var game = new Sn2.Game1();
+﻿using var game = new Sn2.Snares();
 game.Run();

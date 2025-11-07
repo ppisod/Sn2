@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sn2", "Sn2\Sn2.csproj", "{A40A1B79-3CE0-4031-8DC5-671E4C75D002}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppiLib", "ppiLib\ppiLib.csproj", "{E395A089-46AB-4C51-B7B1-A0A2E2F0197E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppiLib", "ppiLib\ppiLib.csproj", "{B5180004-8703-4B81-AE86-4D433C1200C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{A40A1B79-3CE0-4031-8DC5-671E4C75D002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A40A1B79-3CE0-4031-8DC5-671E4C75D002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A40A1B79-3CE0-4031-8DC5-671E4C75D002}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E395A089-46AB-4C51-B7B1-A0A2E2F0197E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E395A089-46AB-4C51-B7B1-A0A2E2F0197E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E395A089-46AB-4C51-B7B1-A0A2E2F0197E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E395A089-46AB-4C51-B7B1-A0A2E2F0197E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5180004-8703-4B81-AE86-4D433C1200C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5180004-8703-4B81-AE86-4D433C1200C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5180004-8703-4B81-AE86-4D433C1200C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5180004-8703-4B81-AE86-4D433C1200C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
