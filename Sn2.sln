@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sn2", "Sn2\Sn2.csproj", "{A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppiLib", "ppiLib\ppiLib.csproj", "{B5180004-8703-4B81-AE86-4D433C1200C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitUtils", "GitUtils", "{9FE3BA0D-C215-4BDB-A71E-27B7B78AD670}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
