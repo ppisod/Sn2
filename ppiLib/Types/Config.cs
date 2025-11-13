@@ -1,6 +1,8 @@
+using System;
+
 namespace ppiLib.Types;
 
-public class Config
+public abstract class Config <Fields> where Fields : Enum
 {
     
 }

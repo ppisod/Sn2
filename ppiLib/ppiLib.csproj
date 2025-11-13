@@ -11,5 +11,8 @@
       <Compile Update="Node\NConfig.cs">
         <DependentUpon>Node.cs</DependentUpon>
       </Compile>
+      <Compile Update="Types\ConfigurableField.cs">
+        <DependentUpon>Config.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 </Project>
