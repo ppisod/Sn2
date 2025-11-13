@@ -7,4 +7,9 @@
             <PrivateAssets>All</PrivateAssets>
         </PackageReference>
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Node\NConfig.cs">
+        <DependentUpon>Node.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
 </Project>
