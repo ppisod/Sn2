@@ -2,11 +2,17 @@
 
 namespace ppiLib.Display;
 
-public class Arrangement
-{
-    public Q<V> Position { get; set; } = new(V.One, V.Zero, V.One);
-    public Q<V> Scale { get; set; } = new(V.One, V.Zero, V.One);
-    public float Rotation { get; set; } = 0f;
-    public Q<V> Padding { get; set; } = new(V.Zero, V.Zero, V.One);
-    public Q<V> Margin { get; set; } = new(V.Zero, V.Zero, V.One);
+public class Arrangement ( Q <V> pos, Q <V> scale, float rot, Q <V> padding, Q <V> margin ) {
+    public Arrangement ( ) 
+        : this ( Q <V>.Identity, 
+            Q <V>.One, 
+            0f, 
+            Q <V>.Zero, 
+            Q <V>.Zero ) { }
+
+    public Q<V> Position { get; set; } = pos;
+    public Q<V> Scale { get; set; } = scale;
+    public float Rotation { get; set; } = rot;
+    public Q<V> Padding { get; set; } = padding;
+    public Q<V> Margin { get; set; } = margin;
 } 

@@ -19,7 +19,7 @@ public class Core : Game
     
     public static SpriteBatch SpriteBatch { get; private set; }
     
-    public new static ContentManager ContentManager { get; private set; }
+    public static ContentManager ContentManager { get; private set; }
 
     public Core(string windowTitle, int width, int height, bool fullscreen)
     {

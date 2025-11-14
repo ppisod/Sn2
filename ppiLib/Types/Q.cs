@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using ppiLib.Types._Interfaces;
 
 namespace ppiLib.Types;
 
@@ -11,8 +12,11 @@ namespace ppiLib.Types;
 /// Derived (in absolute, world values)
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class Q<T> where T : IAdditionOperators<T, T, T>, IMultiplyOperators<T, T, T>
+public class Q<T> where T : IAdditionOperators<T, T, T>, IMultiplyOperators<T, T, T>, IBase<T>
 {
+    public static Q<T> Identity => new(T.One, T.Zero, T.One);
+    public static Q<T> Zero => new(T.Zero, T.Zero, T.One);
+    public static Q<T> One => new(T.One, T.Zero, T.One);
     private T _scale;
     private T _offset;
     private T _reference;

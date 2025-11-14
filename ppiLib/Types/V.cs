@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using ppiLib.Types._Interfaces;
 
 namespace ppiLib.Types;
 
@@ -8,6 +9,7 @@ namespace ppiLib.Types;
 /// Provides arithmetic operators and common helpers (Lerp, Dot, Normalize, etc.).
 /// </summary>
 public class V (double x, double y) :
+    IBase<V>,
     IEquatable<V>,
     IUnaryNegationOperators<V, V>,
     IAdditionOperators<V, V, V>,
@@ -15,6 +17,7 @@ public class V (double x, double y) :
     IMultiplyOperators<V, V, V>, IMultiplyOperators<V, double, V>,
     IDivisionOperators<V, V, V>, IDivisionOperators<V, double, V>
 {
+    public static V Identity => new(1, 0);
     public static V Zero => new(0, 0);
     public static V One => new(1, 1);
     public static V UnitX => new(1, 0);
