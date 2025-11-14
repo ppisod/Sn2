@@ -1,5 +1,8 @@
 #nullable enable
+using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ppiLib.Display;
 
 namespace ppiLib.Node;
@@ -9,29 +12,91 @@ namespace ppiLib.Node;
 /// Nodes can be transformed. But these transformations can be ignored.
 /// The Node parent-child system will take care of eeeverything.
 /// </summary>
-public class Node ( NConfig config ) {
+public class Node ( NConfig config ) : IDisposable {
+
+    public bool Enabled { get; set; } = true;
     
     public required Transform T { get; set; } = config.Transform;
     public Node? Parent { get; private set; } = config.Parent;
     public List <Node> Children { get; private set; } = [];
 
+    /// <summary>
+    /// Adds a child to this node.
+    /// Re-parents if the child already has a parent.
+    /// Custom behavior can be implemented. But please, call base() first. This method is crucial.
+    /// </summary>
+    /// <param name="child"></param>
     public virtual void AddChild ( Node child ) {
+        child.Parent?.RemoveChild ( child );
+        child.Parent = this;
+        Children.Add ( child );
+    }
+    
+    /// <summary>
+    /// TODO: Implement this!
+    /// Adds a child to this node, safely.
+    /// checks if it's descendants is ourself, and if so, throws an exception.
+    /// </summary>
+    /// <param name="child"></param>
+    public virtual void SafeAddChild ( Node child ) {
+        
+    }
+    
+    /// <summary>
+    /// Removes a child from this node.
+    /// The child becomes an orphan.
+    /// Custom behavior can be implemented. But please, call base() first. This method is crucial.
+    /// </summary>
+    /// <param name="child"></param>
+    protected virtual void RemoveChild ( Node child ) {
+        child.Parent = null;
+        Children.Remove ( child );
+    }
+    
+    /// <summary>
+    /// The draw cycle.
+    /// </summary>
+    public void Draw ( SpriteBatch batch ) {
+        if (!Enabled) return;
+        foreach (var child in Children) child.Draw (batch);
+        OnDraw ( batch );
+    }
+    
+    /// <summary>
+    /// Custom drawing behavior here.
+    /// Draw all the shapes you want.
+    /// </summary>
+    protected virtual void OnDraw ( SpriteBatch batch ) {
         
     }
 
-    public virtual void RemoveChild ( Node child ) {
+    /// <summary>
+    /// The update cycle.
+    /// </summary>
+    public void Update ( GameTime time ) {
+        if (!Enabled) return;
+        foreach (var child in Children) child.Update (time);
+        OnUpdate ( time );
+    }
+    
+    /// <summary>
+    /// Custom update behavior here.
+    /// Update according to game logic.
+    /// </summary>
+    protected virtual void OnUpdate ( GameTime time ) {
         
     }
 
-    public virtual void Draw ( ) {
+    /// <summary>
+    /// Custom destroy behavior here.
+    /// </summary>
+    protected virtual void Destroy ( ) {
         
     }
 
-    public virtual void Update ( ) {
-        
-    }
-
-    public virtual void Destroy ( ) {
-        
+    public void Dispose ( ) {
+        Destroy ( );
+        Parent?.RemoveChild ( this );
+        foreach (var child in Children) RemoveChild ( child );
     }
 }
