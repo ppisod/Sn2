@@ -10,7 +10,6 @@ namespace ppiLib.Node;
 /// <summary>
 /// A Node - a graphical object that can be added to the scene graph.
 /// Nodes can be transformed. But these transformations can be ignored.
-/// The Node parent-child system will take care of eeeverything.
 /// </summary>
 public class Node ( NConfig config ) : IDisposable {
 
