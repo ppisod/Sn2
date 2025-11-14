@@ -1,18 +1,21 @@
+#nullable enable
 using ppiLib.Display;
 
 namespace ppiLib.Node;
 
 /// <summary>
-/// A Node system/builder for arguments passed into Node
+/// A Node system/builder for arguments passed into Node.
+/// ALL Node types' constructors take an NConfig, so ALL node types' different properties are accessible.
 /// </summary>
-public class NConfig
-{
-    public string Name { get; private set; }
-    public Transform Transform { get; private set; }
-    public Node Parent { get; private set; }
+public class NConfig {
+    
+    public string Name { get; private set; } = "Node";
+    public Transform Transform { get; private set; } = new Transform ();
+    public Node? Parent { get; private set; }
     
     public NConfig ( NConfig From ) {
-        
+        Name = From.Name;
+        Transform = From.Transform;
     }
 
     public NConfig ( ) {

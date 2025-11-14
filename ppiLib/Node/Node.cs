@@ -9,15 +9,11 @@ namespace ppiLib.Node;
 /// The Node system will take care of the transformations.
 /// The Node loves you.
 /// </summary>
-public abstract class Node {
+public abstract class Node ( NConfig config ) {
+    
+    public required Transform T { get; set; } = config.Transform;
+    public Node? Parent { get; private set; } = config.Parent;
 
-    public Node ( NConfig config ) {
-        
-    }
-    
-    public required Transform T { get; set; }
-    public Node? Parent { get; private set; }
-    
     public abstract void AddChild ( Node child );
     public abstract void RemoveChild ( Node child );
     public abstract void Draw ( );
