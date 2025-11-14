@@ -9,6 +9,7 @@ public class NConfig
 {
     public string Name { get; private set; }
     public Transform Transform { get; private set; }
+    public Node Parent { get; private set; }
     
     public NConfig ( NConfig From ) {
         
