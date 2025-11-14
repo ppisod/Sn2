@@ -8,11 +8,11 @@ namespace ppiLib.Input;
 public class KeyboardController
 {
     private KeyboardState _previousState;
-    public List<Keys> Alphabet; // 65 to 90
-    public List<Keys> NumF; // numpad and F keys (96 to 135)
-    public List<Keys> Special = [Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.LeftShift, Keys.RightShift, Keys.Tab, Keys.Enter, Keys.Back];
+    public readonly List<Keys> Alphabet; // 65 to 90
+    public readonly List<Keys> NumF; // numpad and F keys (96 to 135)
+    public readonly List<Keys> Special = [Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.LeftShift, Keys.RightShift, Keys.Tab, Keys.Enter, Keys.Back];
 
-    public List<Keys> AllValidKeys;
+    public readonly List<Keys> AllValidKeys;
 
     public event Action<Keys> KeyDown;
     public event Action<Keys> KeyUp;
@@ -21,7 +21,6 @@ public class KeyboardController
     {
         Alphabet = [];
         NumF = [];
-        Special = [];
         AllValidKeys = [];
         
         for (var i = 65; i <= 90; i++)
