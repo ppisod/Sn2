@@ -6,8 +6,9 @@ namespace ppiLib.Node;
 /// <summary>
 /// A Node system/builder for arguments passed into Node.
 /// ALL Node types' constructors take an NConfig, so ALL node types' different properties are accessible.
+/// In this file, only the primitive, required members of NConfig live.
 /// </summary>
-public class NConfig {
+public partial class NConfig {
     
     public string Name { get; private set; } = "Node";
     public Transform Transform { get; private set; } = new Transform ();
