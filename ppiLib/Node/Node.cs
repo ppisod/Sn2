@@ -24,7 +24,7 @@ public class Node ( NConfig config ) : IDisposable {
     /// Re-parents if the child already has a parent.
     /// Custom behavior can be implemented. But please, call base() first. This method is crucial.
     /// </summary>
-    /// <param name="child"></param>
+    /// <param name="child">The child node</param>
     public virtual void AddChild ( Node child ) {
         child.Parent?.RemoveChild ( child );
         child.Parent = this;
@@ -36,7 +36,7 @@ public class Node ( NConfig config ) : IDisposable {
     /// Adds a child to this node, safely.
     /// checks if it's descendants is ourself, and if so, throws an exception.
     /// </summary>
-    /// <param name="child"></param>
+    /// <param name="child">The child node</param>
     public virtual void SafeAddChild ( Node child ) {
         
     }
@@ -44,10 +44,12 @@ public class Node ( NConfig config ) : IDisposable {
     /// <summary>
     /// Removes a child from this node.
     /// The child becomes an orphan.
+    /// If the child has another parent, nothing will happen.
     /// Custom behavior can be implemented. But please, call base() first. This method is crucial.
     /// </summary>
-    /// <param name="child"></param>
+    /// <param name="child">The child node</param>
     protected virtual void RemoveChild ( Node child ) {
+        if (child.Parent != this) return;
         child.Parent = null;
         Children.Remove ( child );
     }

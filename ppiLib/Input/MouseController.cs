@@ -6,6 +6,16 @@ namespace ppiLib.Input;
 
 public class MouseController
 {
+
+    public MouseController ( ) {
+        if (ctrl != null) throw new InvalidOperationException("Only one MouseController instance is allowed!");
+        ctrl = this;
+    }
+    
+    // Making this a singleton too
+    internal static MouseController ctrl;
+    public static MouseController Instance => ctrl;
+    
     private MouseState _lastState = Mouse.GetState();
 
     public MouseState GetState()

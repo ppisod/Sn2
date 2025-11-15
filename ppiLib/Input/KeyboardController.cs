@@ -7,6 +7,10 @@ namespace ppiLib.Input;
 
 public class KeyboardController
 {
+    // Making it a singleton
+    internal static KeyboardController ctrl { get; private set; }
+    public static KeyboardController Instance => ctrl;
+    
     private KeyboardState _previousState;
     public readonly List<Keys> Alphabet; // 65 to 90
     public readonly List<Keys> NumF; // numpad and F keys (96 to 135)
@@ -19,6 +23,8 @@ public class KeyboardController
 
     public KeyboardController()
     {
+        if (ctrl != null) throw new InvalidOperationException("Only one KeyboardController instance is allowed!");
+        ctrl = this;
         Alphabet = [];
         NumF = [];
         AllValidKeys = [];
