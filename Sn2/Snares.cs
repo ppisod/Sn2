@@ -20,7 +20,7 @@ public class Snares ( )
     protected override void draw ( GameTime gT ) {
         base.draw ( gT );
     }
-    
+    // hi
     protected override void upd ( GameTime gT ) {
         base.upd ( gT );
     }
