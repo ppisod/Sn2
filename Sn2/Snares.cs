@@ -1,47 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ppiLib;
 
 namespace Sn2;
 
-public class Snares : Game
+public class Snares ( )
+    : Core (
+        "Snares-v0.2",
+        1920,
+        1080,
+        true
+    )
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
-
-    public Snares()
-    {
-        _graphics = new GraphicsDeviceManager(this);
-        Content.RootDirectory = "Content";
-        IsMouseVisible = true;
+    protected override void ini ( ) {
+        base.ini ();
     }
 
-    protected override void Initialize()
-    {
-        base.Initialize();
+    protected override void draw ( GameTime gT ) {
+        base.draw ( gT );
     }
 
-    protected override void LoadContent()
-    {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
-        
-    }
-
-    protected override void Update(GameTime gameTime)
-    {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        base.Update(gameTime);
-    }
-
-    protected override void Draw(GameTime gameTime)
-    {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        // TODO: Add your drawing code here
-
-        base.Draw(gameTime);
+    protected override void upd ( GameTime gT ) {
+        base.upd ( gT );
     }
 }

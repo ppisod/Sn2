@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace ppiLib;
 
@@ -12,6 +13,8 @@ public class Core : Game
 {
     internal static Core thisInstance;
     public static Core Instance => thisInstance;
+
+    public static Color BackgroundColor { get; set; } = Color.CornflowerBlue;
     
     public static GraphicsDeviceManager DeviceManager { get; private set; }
     
@@ -23,7 +26,7 @@ public class Core : Game
 
     public Core(string windowTitle, int width, int height, bool fullscreen)
     {
-        if (thisInstance != null) throw new InvalidOperationException("Only a single Core instance.");
+        if (thisInstance != null) throw new InvalidOperationException("Only a single Core instance is allowed.");
 
         thisInstance = this;
         DeviceManager =  new GraphicsDeviceManager(this);
@@ -41,5 +44,32 @@ public class Core : Game
         ContentManager.RootDirectory = "Content";
         
         IsMouseVisible = true;
+    }
+
+    protected virtual void ini ( ) { }
+    protected virtual void upd ( GameTime gT ) { }
+    protected virtual void draw ( GameTime gT ) { }
+
+    protected override void Initialize ( ) {
+        ini ();
+        base.Initialize ();
+    }
+
+    protected override void Draw ( GameTime gameTime ) {
+        GraphicsDevice.Clear(BackgroundColor);
+        draw (gameTime);
+        base.Draw ( gameTime );
+    }
+
+    protected override void Update ( GameTime gameTime ) {
+        upd (gameTime);
+
+        // exit
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+            Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Exit();
+
+
+        base.Update ( gameTime );
     }
 }
