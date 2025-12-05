@@ -31,4 +31,8 @@
     <ItemGroup>
       <ProjectReference Include="..\ppiLib\ppiLib.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Lib\Lerp\" />
+      <Folder Include="Lib\State\" />
+    </ItemGroup>
 </Project>

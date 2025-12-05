@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Sn2.Lib;
+namespace Sn2.Lib.Rhythm;
 
 
 public partial class Metronome : IDisposable {
