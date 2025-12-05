@@ -29,11 +29,13 @@ public class Core : Game
         if (thisInstance != null) throw new InvalidOperationException("Only a single Core instance is allowed.");
 
         thisInstance = this;
-        DeviceManager =  new GraphicsDeviceManager(this);
+        DeviceManager = new GraphicsDeviceManager(this);
 
         DeviceManager.PreferredBackBufferWidth = width;
         DeviceManager.PreferredBackBufferHeight = height;
         DeviceManager.IsFullScreen = fullscreen;
+
+        GraphicsDevice = DeviceManager.GraphicsDevice;
         
         DeviceManager.ApplyChanges();
 
@@ -56,7 +58,7 @@ public class Core : Game
     }
 
     protected override void Draw ( GameTime gameTime ) {
-        GraphicsDevice.Clear(BackgroundColor);
+        base.GraphicsDevice.Clear(BackgroundColor);
         draw (gameTime);
         base.Draw ( gameTime );
     }
