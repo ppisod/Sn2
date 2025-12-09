@@ -14,7 +14,7 @@ public class Core : Game
     internal static Core thisInstance;
     public static Core Instance => thisInstance;
 
-    public static Color BackgroundColor { get; set; } = Color.CornflowerBlue;
+    public static Color BackgroundColor { get; set; } = Color.White;
     
     public static GraphicsDeviceManager DeviceManager { get; private set; }
     
@@ -35,8 +35,6 @@ public class Core : Game
         DeviceManager.PreferredBackBufferHeight = height;
         DeviceManager.IsFullScreen = fullscreen;
 
-        GraphicsDevice = DeviceManager.GraphicsDevice;
-        
         DeviceManager.ApplyChanges();
 
         Window.Title = windowTitle;
@@ -53,8 +51,14 @@ public class Core : Game
     protected virtual void draw ( GameTime gT ) { }
 
     protected override void Initialize ( ) {
-        ini ();
-        base.Initialize ();
+        base.Initialize ( );
+
+        // Cache the created GraphicsDevice and create SpriteBatch now that it's valid
+        GraphicsDevice = DeviceManager.GraphicsDevice;
+        SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+        // Now run user initialization which may rely on GraphicsDevice/SpriteBatch
+        ini ( );
     }
 
     protected override void Draw ( GameTime gameTime ) {

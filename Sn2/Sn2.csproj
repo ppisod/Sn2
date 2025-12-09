@@ -33,6 +33,5 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Lib\Lerp\" />
-      <Folder Include="Lib\State\" />
     </ItemGroup>
 </Project>
