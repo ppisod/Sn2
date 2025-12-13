@@ -51,53 +51,42 @@ public class Disp {
     public V Origin { get; set; }
 
     public Texture2D Texture { get; set; }
-    public Rela DrawAt { get; set; }
+
+    public AnchPos DrawAtHoriz { get; set; }
+    public AnchPos DrawAtVert { get; set; }
 
     [Normal(false)]
     public V GetDrawOrigin ( ) {
 
-        V initialDrawPos;
+        var drawPos = Origin + new V (
+            (int) DrawAtHoriz * ( (Size.Reference.X - Size.Derived.X) / 2d ),
+            (int) DrawAtVert * ( (Size.Reference.Y - Size.Derived.Y) / 2d )
+        ) + new V (
+            -( (int) DrawAtHoriz - 1) * Padding.Derived.X,
+            -( (int) DrawAtVert - 1) * Padding.Derived.Y
+        );
 
-        switch (DrawAt)
-        {
-            case Rela.TopLeft:
-                initialDrawPos = Origin + Padding.Derived;
-                break;
-            case Rela.TopMiddle:
-                initialDrawPos = new V (
-                    Padding.Derived.X + Origin.X + ( Size.Reference.X - Size.Derived.X ) / 2,
-                    Padding.Derived.Y + Origin.Y
-                );
-                break;
-            case Rela.TopRight:
-                initialDrawPos = new V (
-                    Origin.X + ( Size.Reference.X - Size.Derived.X ) + Padding.Derived.X,
-                    Padding.Derived.Y + Origin.Y
-                );
-                break;
-            case Rela.MiddleLeft:
-                initialDrawPos = new V (
-                    Origin.X + Padding.Derived.X,
-                    Origin.Y + ( Size.Reference.Y - Size.Derived.Y ) / 2
-                );
-                break;
-            case Rela.Middle:
-                initialDrawPos = new V (
-                    Origin.X + ( Size.Reference.X - Size.Derived.X ) / 2,
-                    Origin.Y + ( Size.Reference.Y - Size.Derived.Y ) / 2
-                );
-                break;
-            case Rela.MiddleRight:
-                break;
-            case Rela.BottomLeft:
-                break;
-            case Rela.BottomMiddle:
-                break;
-            case Rela.BottomRight:
-                break;
-            default:
-                break;
-        }
+        return drawPos;
+
+    }
+
+    [Normal ( false )]
+    public V GetDrawSize ( ) {
+        return Size.Derived;
+    }
+
+    [Normal ( false )]
+    public V GetDrawScale ( Texture2D tex ) {
+        var scale = GetDrawSize ();
+        var texScale = new V ( tex.Width, tex.Height );
+        return texScale / scale;
+    }
+
+    [Normal ( false )]
+    public V GetDrawScale ( int w, int h ) {
+        var scale = GetDrawSize();
+        var texScale = new V ( w, h );
+        return texScale / scale;
     }
 
 }

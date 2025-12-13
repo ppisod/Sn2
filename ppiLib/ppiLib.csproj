@@ -11,7 +11,7 @@
       <Compile Update="Node\NConfig.cs">
         <DependentUpon>Node.cs</DependentUpon>
       </Compile>
-      <Compile Update="Display\Rela.cs">
+      <Compile Update="Display\AnchPos.cs">
         <DependentUpon>Disp.cs</DependentUpon>
       </Compile>
     </ItemGroup>
