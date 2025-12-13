@@ -11,12 +11,12 @@ namespace ppiLib.Node;
 public partial class NConfig {
     
     public string Name { get; private set; } = "Node";
-    public Transform Transform { get; private set; } = new Transform ();
+    public Disp Disp { get; private set; } = new Disp ();
     public Node? Parent { get; private set; }
     
     public NConfig ( NConfig From ) {
         Name = From.Name;
-        Transform = From.Transform;
+        Disp = From.Disp;
     }
 
     public NConfig ( ) {

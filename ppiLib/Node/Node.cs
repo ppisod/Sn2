@@ -15,7 +15,7 @@ public class Node ( NConfig config ) : IDisposable {
 
     public bool Enabled { get; set; } = true;
     
-    public required Transform T { get; set; } = config.Transform;
+    public required Disp T { get; set; } = config.Disp;
     public Node? Parent { get; private set; } = config.Parent;
     public List <Node> Children { get; private set; } = [];
 
