@@ -27,6 +27,20 @@ public class Disp {
     }
 
     public Disp (
+        V normalizedSize,
+        V normalizedPadding,
+        V normalizedPosition,
+        V reference
+    )
+        : this (
+            V.Zero,
+            normalizedSize,
+            normalizedPadding,
+            normalizedPosition,
+            reference
+        ) { }
+
+    public Disp (
         V origin,
         V normalizedSize,
         V normalizedPadding,

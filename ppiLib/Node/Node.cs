@@ -16,8 +16,13 @@ public class Node ( NConfig config ) : IDisposable {
     public bool Enabled { get; set; } = true;
     
     public required Disp T { get; set; } = config.Disp;
+    public bool Dirty { get; set; } = true;
     public Node? Parent { get; private set; } = config.Parent;
     public List <Node> Children { get; private set; } = [];
+
+    public void UpdateDisplaying ( ) {
+
+    }
 
     /// <summary>
     /// Adds a child to this node.
@@ -85,7 +90,11 @@ public class Node ( NConfig config ) : IDisposable {
     /// Update according to game logic.
     /// </summary>
     protected virtual void OnUpdate ( GameTime time ) {
-        
+        if (Dirty)
+        {
+            UpdateDisplaying ( );
+            foreach (var child in Children) child.Dirty = true;
+        }
     }
 
     /// <summary>
